@@ -3,3 +3,5 @@ obj/
 .vs/
 node_modules/
 appsettings.Development.json
+review-build-output/
+review-test-output/

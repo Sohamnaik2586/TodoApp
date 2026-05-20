@@ -1,5 +1,7 @@
 using TodoApi.DTOs.TodoDTOs;
 
+using TodoApi.Models.Enums;
+
 namespace TodoApi.Interfaces;
 
 public interface ITodoService
@@ -8,7 +10,7 @@ public interface ITodoService
 
     Task<TodoResponseDto?> GetTodoByIdAsync(int id);
 
-    Task CreateTodoAsync(CreateTodoDto dto);
+    Task<TodoResponseDto> CreateTodoAsync(CreateTodoDto dto);
 
     Task<bool> UpdateTodoAsync(int id, UpdateTodoDto dto);
 
@@ -16,5 +18,7 @@ public interface ITodoService
 
     Task<IEnumerable<TodoResponseDto>> SearchTodosAsync(string keyword);
 
-    Task<IEnumerable<TodoResponseDto>> GetTodosByCategoryAsync(string category);
+    Task<IEnumerable<TodoResponseDto>> GetTodosByCategoryAsync(CategoryType category);
+
+    Task<IEnumerable<TodoResponseDto>> GetTodosByPriorityAsync(PriorityLevel priority);
 }

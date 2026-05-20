@@ -1,0 +1,132 @@
+/* Layout Container */
+.todo-layout {
+  margin: 0;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  background: transparent;
+}
+
+/* Sidebar */
+.todo-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content */
+.todo-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: var(--text-1);
+  margin: 0 auto;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.loading-state::after {
+  content: "";
+  animation: spin 1s linear infinite;
+  margin-left: 0.5rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #2b3a56;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error State */
+.error-state {
+  background: #3b1c1c;
+  color: #fecaca;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border-left: 3px solid #f87171;
+  margin: 0 0 0.8rem 0;
+  font-size: 0.8rem;
+}
+
+/* Todos Grid */
+.todos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+  align-content: start;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .todo-layout {
+    gap: 1.2rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .todos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .todo-layout {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .todo-sidebar {
+    width: 100%;
+    order: 1;
+  }
+
+  .todo-main {
+    order: 2;
+  }
+
+  .todos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .todo-layout {
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .todos-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+}
